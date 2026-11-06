@@ -2,7 +2,7 @@
 
 Website for **SothoPulse**, a photography and web design studio in Johannesburg, South Africa.
 
-Live site: https://sothopulse.netlify.app
+Live site: https://takalotumelo.github.io/sothopulse/
 
 ## Pages
 
@@ -12,23 +12,16 @@ Live site: https://sothopulse.netlify.app
 | `photography.html` | Projects – photography and video |
 | `websites.html` | Projects – websites |
 | `services.html` | Services |
-| `contact.html` | Contact and enquiry form |
-| `thanks.html` | Shown after an enquiry is sent |
+| `contact.html` | Contact – the enquiry form opens WhatsApp with the details filled in |
+| `thanks.html` | Thank-you page |
 | `404.html` | Page not found |
 
 Media lives in `media/` (photos, films, client logos), `video/` (hero background) and `img/`.
 
-## Deploying on Netlify
+## Hosting
 
-1. In Netlify, choose **Add new site → Import an existing project** and pick this repository.
-2. Leave the build command empty and set the publish directory to `/` (the repository root).
-3. Every push to `main` then goes live automatically.
+The site runs on GitHub Pages from the `main` branch (root folder). Every push to `main` goes live
+within a minute or two. To turn it on: **Settings → Pages → Build and deployment → Deploy from a branch →
+`main` / `(root)` → Save**.
 
-### Contact form
-
-The enquiry form uses Netlify Forms. In **Site configuration → Forms**, turn on form detection, redeploy once,
-and add an email notification so new enquiries arrive in your inbox.
-
-### Search
-
-After launch, add the site to Google Search Console and submit `/sitemap.xml`.
+After launch, add the site to Google Search Console and submit `sitemap.xml`.
