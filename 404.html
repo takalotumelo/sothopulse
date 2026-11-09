@@ -527,37 +527,27 @@ h1 .ln{display:block}
   footer .wrap{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 }
 body:has(.lb:not([hidden])) .wa,body:has(.nav.open) .wa{display:none}
-/* faq widget */
-.faq-fab{all:unset;box-sizing:border-box;cursor:pointer;width:60px;height:60px;border-radius:50%;background:var(--panel);border:1px solid #34343a;color:var(--text);display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.8);transition:transform .25s var(--ease),background .25s,border-color .25s}
-.faq-fab:hover{transform:translateY(-2px);border-color:var(--text)}
-.faq-fab:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-.faq-q,.faq-off{grid-area:1/1;transition:opacity .2s,transform .3s var(--ease)}
-.faq-q{font-size:14px;font-weight:800;letter-spacing:.06em}
-.faq-off{font-size:18px;opacity:0;transform:rotate(-90deg)}
-.faq-fab[aria-expanded="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
-.faq-fab[aria-expanded="true"] .faq-q{opacity:0;transform:rotate(90deg)}
-.faq-fab[aria-expanded="true"] .faq-off{opacity:1;transform:none}
-.faq-card{width:min(380px,calc(100vw - 32px));max-height:min(560px,calc(100vh - 200px));display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.9);overflow:hidden}
-.faq-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 16px 12px 20px;border-bottom:1px solid var(--line)}
-.faq-k{margin:0 0 4px;font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--accent)}
-.faq-top h3{margin:0;font-size:21px;font-weight:800;letter-spacing:-.02em}
-.faq-list{overflow-y:auto;overscroll-behavior:contain;padding:0 20px}
+/* chat / faq tabs */
+.wa-card{display:flex;flex-direction:column;max-height:min(600px,calc(100vh - 140px))}
+.wa-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:5px;margin:12px 16px 0;background:#141519;border:1px solid var(--line);border-radius:999px;flex:none}
+.wa-tabs button{all:unset;cursor:pointer;text-align:center;font-size:14px;font-weight:600;color:var(--dim);padding:8px 0;border-radius:999px;transition:background .2s,color .2s}
+.wa-tabs button:hover{color:var(--text)}
+.wa-tabs button[aria-selected="true"]{background:var(--brand);color:var(--text);box-shadow:inset 0 0 0 1px var(--brand-edge)}
+.wa-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wa-faq{overflow-y:auto;overscroll-behavior:contain;padding:4px 16px 0;min-height:0}
 .fq{border-bottom:1px solid var(--line)}
-.fq:last-child{border-bottom:0}
-.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:15px 0;font-size:15px;font-weight:600;line-height:1.4}
+.wa-faq .fq:last-of-type{border-bottom:0}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:14px 0;font-size:15px;font-weight:600;line-height:1.4}
 .fq summary::-webkit-details-marker{display:none}
 .fq summary::after{content:"+";flex:none;color:var(--accent);font-size:20px;line-height:1;transition:transform .25s var(--ease)}
 .fq[open] summary::after{transform:rotate(45deg)}
 .fq summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.fq p{margin:0;padding:0 0 16px;font-size:14px;color:var(--dim);line-height:1.6}
-.faq-more{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 20px;border-top:1px solid var(--line);text-decoration:none;font-size:14px;font-weight:600;color:var(--text);background:rgba(255,255,255,.02)}
+.fq p{margin:0;padding:0 0 15px;font-size:14px;color:var(--dim);line-height:1.6}
+.faq-more{all:unset;box-sizing:border-box;cursor:pointer;position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 0 16px;margin-top:-1px;border-top:1px solid var(--line);font-size:14px;font-weight:600;color:var(--text);background:var(--panel)}
 .faq-more span{transition:transform .25s var(--ease)}
 .faq-more:hover span{transform:translateX(4px)}
-@media (max-width:900px){
-  .faq-fab{width:56px;height:56px}
-  .faq-card{max-height:calc(100vh - 220px)}
-  footer .wrap{padding-bottom:calc(156px + env(safe-area-inset-bottom,0px))!important}
-}
+.faq-more:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (max-width:900px){.wa-card{max-height:calc(100dvh - 190px)}}
 /* phone action bar */
 body:has(.nav.open){overflow:hidden}
 body:has(.nav.open) .bar{display:none!important}
@@ -609,26 +599,17 @@ body:has(.nav.open) .bar{display:none!important}
 </div>
 <script type="application/json" id="galleries">{"renault": {"title": "Renault", "images": ["media/renault-01.jpg", "media/renault-02.jpg", "media/renault-03.jpg", "media/renault-04.jpg", "media/renault-05.jpg", "media/renault-06.jpg", "media/renault-07.jpg", "media/renault-08.jpg", "media/renault-09.jpg", "media/renault-10.jpg", "media/renault-11.jpg", "media/renault-12.jpg", "media/renault-13.jpg", "media/renault-14.jpg", "media/renault-15.jpg", "media/renault-16.jpg"]}, "studio88": {"title": "Studio 88 & Adidas", "images": ["media/studio88-01.jpg", "media/studio88-02.jpg", "media/studio88-03.jpg"]}, "skullcandy": {"title": "Skullcandy SA", "images": ["media/skullcandy-01.jpg", "media/skullcandy-02.jpg", "media/skullcandy-03.jpg", "media/skullcandy-04.jpg", "media/skullcandy-05.jpg", "media/skullcandy-06.jpg", "media/skullcandy-07.jpg", "media/skullcandy-08.jpg", "media/skullcandy-09.jpg"]}, "play": {"title": "Play Energy Drink", "images": ["media/play-01.jpg", "media/play-02.jpg", "media/play-03.jpg", "media/play-04.jpg", "media/play-05.jpg", "media/play-06.jpg", "media/play-07.jpg", "media/play-08.jpg", "media/play-09.jpg", "media/play-10.jpg", "media/play-11.jpg", "media/play-12.jpg", "media/play-13.jpg", "media/play-14.jpg", "media/play-15.jpg", "media/play-16.jpg", "media/play-17.jpg", "media/play-18.jpg", "media/play-19.jpg"]}, "jagermeister": {"title": "Jägermeister", "video": "media/jagermeister.mp4", "poster": "media/jagermeister-thumb.jpg"}, "donjulio": {"title": "Don Julio", "video": "media/donjulio.mp4", "poster": "media/donjulio-thumb.jpg"}}</script>
 <div class="wa" id="wa">
-  <div class="faq-card" id="faq-card" role="dialog" aria-modal="false" aria-labelledby="faq-title" hidden>
-    <div class="faq-top"><div><p class="faq-k">FAQ</p><h3 id="faq-title">Common questions</h3></div><button class="wa-x" type="button" id="faq-close" aria-label="Close questions">✕</button></div>
-    <div class="faq-list">
-      <details class="fq"><summary>What does SothoPulse do?</summary><p>We're a photography and web design studio. We photograph brands, products, events and people, and we design and build websites. You can book one or both.</p></details>
-      <details class="fq"><summary>Can I book photography or a website on its own?</summary><p>Yes. Many clients start with a single shoot or a single website. When you need both, we plan them together so everything matches.</p></details>
-      <details class="fq"><summary>Do you also shoot video?</summary><p>Yes. We film event highlights, after-movies and short-form content for social media. See the Jägermeister and Don Julio films on the Projects page.</p></details>
-      <details class="fq"><summary>Can you redesign or update my current website?</summary><p>Yes. We redesign outdated sites and handle updates, new pages and fixes after launch.</p></details>
-      <details class="fq"><summary>Will my website show up on Google?</summary><p>Every site we build includes search optimisation basics, so the people looking for what you do can find you.</p></details>
-      <details class="fq"><summary>Do you work outside Johannesburg?</summary><p>We're based in Johannesburg and work with clients across South Africa and beyond.</p></details>
-      <details class="fq"><summary>How do I get a quote?</summary><p>Send a short brief by email or WhatsApp: what you need, roughly when, and anything about your brand we should know. We'll come back with next steps and a quote.</p></details>
-    </div>
-    <a class="faq-more" href="https://wa.me/27627293706?text=Hi%20Tumelo%2C%20I%20have%20a%20question%3A%20" target="_blank" rel="noopener">Still have a question? Ask on WhatsApp <span aria-hidden="true">→</span></a>
-  </div>
   <div class="wa-card" id="wa-card" role="dialog" aria-modal="false" aria-labelledby="wa-name" hidden>
     <div class="wa-head">
       <span class="wa-av"><img src="media/logos/sothopulse-mark.png" alt="" width="20" height="23"></span>
       <div><b id="wa-name">SothoPulse</b><span>Usually replies on WhatsApp</span></div>
       <button class="wa-x" type="button" id="wa-close" aria-label="Close chat">✕</button>
     </div>
-    <div class="wa-body">
+    <div class="wa-tabs" role="tablist">
+      <button type="button" role="tab" id="tab-chat" aria-selected="true" aria-controls="pane-chat">Chat</button>
+      <button type="button" role="tab" id="tab-faq" aria-selected="false" aria-controls="pane-faq">FAQ</button>
+    </div>
+    <div class="wa-body" role="tabpanel" id="pane-chat" aria-labelledby="tab-chat">
       <p class="wa-msg">Hi, I'm Tumelo.<br>What can I help you with? Pick one and we'll continue on WhatsApp.</p>
       <div class="wa-opts">
         <a href="https://wa.me/27627293706?text=Hi%20Tumelo%2C%20I%27d%20like%20a%20quote%20for%20photography." target="_blank" rel="noopener">Photography</a>
@@ -637,9 +618,18 @@ body:has(.nav.open) .bar{display:none!important}
       </div>
       <a class="wa-start" href="https://wa.me/27627293706?text=Hi%20Tumelo%2C%20I%27d%20like%20a%20quote%20for%20" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A12.96 12.96 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3zm0 23.63c-2.03 0-3.98-.55-5.69-1.58l-.4-.24-3.97 1.04 1.06-3.86-.27-.4A10.6 10.6 0 0 1 5.4 16c0-5.86 4.78-10.63 10.64-10.63 5.85 0 10.6 4.77 10.6 10.63 0 5.86-4.76 10.63-10.6 10.63zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66 0 1.57 1.14 3.08 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.81.67.76.24 1.46.21 2-.13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/></svg>Start chat on WhatsApp</a>
     </div>
+    <div class="wa-faq" role="tabpanel" id="pane-faq" aria-labelledby="tab-faq" hidden>
+      <details class="fq"><summary>What does SothoPulse do?</summary><p>We're a photography and web design studio. We photograph brands, products, events and people, and we design and build websites. You can book one or both.</p></details>
+      <details class="fq"><summary>Can I book photography or a website on its own?</summary><p>Yes. Many clients start with a single shoot or a single website. When you need both, we plan them together so everything matches.</p></details>
+      <details class="fq"><summary>Do you also shoot video?</summary><p>Yes. We film event highlights, after-movies and short-form content for social media. See the Jägermeister and Don Julio films on the Projects page.</p></details>
+      <details class="fq"><summary>Can you redesign or update my current website?</summary><p>Yes. We redesign outdated sites and handle updates, new pages and fixes after launch.</p></details>
+      <details class="fq"><summary>Will my website show up on Google?</summary><p>Every site we build includes search optimisation basics, so the people looking for what you do can find you.</p></details>
+      <details class="fq"><summary>Do you work outside Johannesburg?</summary><p>We're based in Johannesburg and work with clients across South Africa and beyond.</p></details>
+      <details class="fq"><summary>How do I get a quote?</summary><p>Send a short brief by email or WhatsApp: what you need, roughly when, and anything about your brand we should know. We'll come back with next steps and a quote.</p></details>
+      <button type="button" class="faq-more" id="faq-to-chat">Still have a question? Chat with us <span aria-hidden="true">→</span></button>
+    </div>
   </div>
-  <button class="faq-fab" type="button" id="faq-toggle" aria-expanded="false" aria-controls="faq-card" aria-label="Frequently asked questions"><span class="faq-q">FAQ</span><span class="faq-off" aria-hidden="true">✕</span></button>
-  <button class="wa-fab" type="button" id="wa-toggle" aria-expanded="false" aria-controls="wa-card" aria-label="Chat with SothoPulse on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A12.96 12.96 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3zm0 23.63c-2.03 0-3.98-.55-5.69-1.58l-.4-.24-3.97 1.04 1.06-3.86-.27-.4A10.6 10.6 0 0 1 5.4 16c0-5.86 4.78-10.63 10.64-10.63 5.85 0 10.6 4.77 10.6 10.63 0 5.86-4.76 10.63-10.6 10.63zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66 0 1.57 1.14 3.08 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.81.67.76.24 1.46.21 2-.13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/></svg><i class="wa-dot" aria-hidden="true"></i><span class="wa-tip">Chat with us</span></button>
+  <button class="wa-fab" type="button" id="wa-toggle" aria-expanded="false" aria-controls="wa-card" aria-label="Chat with SothoPulse or read common questions"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A12.96 12.96 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3zm0 23.63c-2.03 0-3.98-.55-5.69-1.58l-.4-.24-3.97 1.04 1.06-3.86-.27-.4A10.6 10.6 0 0 1 5.4 16c0-5.86 4.78-10.63 10.64-10.63 5.85 0 10.6 4.77 10.6 10.63 0 5.86-4.76 10.63-10.6 10.63zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66 0 1.57 1.14 3.08 1.3 3.3.16.21 2.25 3.43 5.44 4.81.76.33 1.35.52 1.81.67.76.24 1.46.21 2-.13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/></svg><i class="wa-dot" aria-hidden="true"></i><span class="wa-tip">Chat or FAQ</span></button>
 </div><!--/wa-->
 <div class="bar">
   <div class="wrap">
@@ -753,17 +743,14 @@ body:has(.nav.open) .bar{display:none!important}
   })();
 
   (function(){
-    var card=document.getElementById('faq-card'),tog=document.getElementById('faq-toggle'),x=document.getElementById('faq-close');
-    if(!card||!tog)return;
-    var waCard=document.getElementById('wa-card'),waTog=document.getElementById('wa-toggle');
-    function open(){if(waCard&&!waCard.hidden&&waTog)waTog.click();card.hidden=false;tog.setAttribute('aria-expanded','true');var f=card.querySelector('summary');if(f)f.focus({preventScroll:true})}
-    function close(){card.hidden=true;tog.setAttribute('aria-expanded','false');tog.focus({preventScroll:true})}
-    tog.addEventListener('click',function(){card.hidden?open():close()});
-    x.addEventListener('click',close);
-    if(waTog)waTog.addEventListener('click',function(){if(!card.hidden){card.hidden=true;tog.setAttribute('aria-expanded','false')}});
-    card.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)card.querySelectorAll('details').forEach(function(o){if(o!==d)o.open=false})})});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!card.hidden)close()});
-    document.addEventListener('click',function(e){if(!card.hidden&&!e.target.closest('#wa'))close()});
+    var tc=document.getElementById('tab-chat'),tf=document.getElementById('tab-faq'),pc=document.getElementById('pane-chat'),pf=document.getElementById('pane-faq');
+    if(!tc||!tf)return;
+    function show(which){var f=which==='faq';tc.setAttribute('aria-selected',String(!f));tf.setAttribute('aria-selected',String(f));pc.hidden=f;pf.hidden=!f}
+    tc.addEventListener('click',function(){show('chat')});
+    tf.addEventListener('click',function(){show('faq')});
+    [tc,tf].forEach(function(t){t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=t===tc?tf:tc;n.click();n.focus()}})});
+    var more=document.getElementById('faq-to-chat');if(more)more.addEventListener('click',function(){show('chat');tc.focus()});
+    pf.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)pf.querySelectorAll('details').forEach(function(o){if(o!==d)o.open=false})})});
   })();
 
   var bm=document.getElementById('bigmark');
